@@ -1,3 +1,4 @@
+"use client";
 export default async function ProfilePage({ params }) {
   const { id } = await params; // Assuming params is an object containing the route parameters
     return (
