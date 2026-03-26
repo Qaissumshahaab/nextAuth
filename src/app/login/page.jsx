@@ -16,7 +16,7 @@ export default function LoginPage() {
     const response = await axios.post("http://localhost:3000/api/users/login",user);
     if (response.status === 200) {
       alert(response.data.message)
-      router.push("/signup");
+     // router.push(`/profile/${response.data.userId}`);
     }
   };
   return (
