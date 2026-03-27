@@ -13,5 +13,5 @@ const signupSchema =new mongoose.Schema({
     },
 })
 
-const Signup = mongoose.model("Signup",signupSchema);
+const Signup = mongoose.models.Signup || mongoose.model("Signup",signupSchema);
 export default Signup;
