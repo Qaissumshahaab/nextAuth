@@ -7,7 +7,7 @@ export const GET= async (request)=>{
     try{
   const datafromToken= verifyToken(request);
     await dbConnect();
-    const user=await Signup.findById(datafromToken.userId).select("-password");
+    const user = await Signup.findById(datafromToken.userId).select("-password");
     if(!user){
         return NextResponse.json({message:"User not found"}, {status:404});
     }
