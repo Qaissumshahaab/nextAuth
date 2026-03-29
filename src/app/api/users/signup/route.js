@@ -18,14 +18,20 @@ export async function POST(request){
             email,
             password:hashedPassword,
         });
-        await newUser.save();
+       const user = await newUser.save();
+
+        // Send verification email to the user to verify their account
+        await sendEmail(email, 'VERIFY', user._id);
         
-        // send verification email here using nodemailer to verify the user's email address
-         await sendEmail({email, emailType: 'VERIFY', userId: newUser._id});
 
         return NextResponse.json({message:"User created successfully"}, {status:201});
-    } catch (error) {
-        console.error("Error during signup:", error);
-        return NextResponse.json({message:"Internal server error"}, {status:500});
     }
+    
+    catch (error) {
+  console.error("Signup API ERROR:", error);
+  return NextResponse.json(
+    { error: error.message },
+    { status: 400 }
+  );
+}
 }

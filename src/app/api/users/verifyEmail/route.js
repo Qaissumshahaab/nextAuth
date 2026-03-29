@@ -15,7 +15,7 @@ export async function POST(request) {
         user.verifyToken=undefined;
         user.verifyTokenExpiry=undefined;
         await user.save();
-        return new Response(JSON.stringify({message:'Email verified successfully'}),{status:200});
+        return new Response(JSON.stringify({message:'Email verified successfully' ,isVerified:user.isVerified}),{status:200});
     } 
      catch (error) {
         return new Response(JSON.stringify({message:'Error verifying email'}),{status:500});

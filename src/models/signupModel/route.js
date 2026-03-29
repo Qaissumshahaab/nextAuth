@@ -16,6 +16,11 @@ const signupSchema =new mongoose.Schema({
     forgotPasswordTokenExpiry:Date,
     verifyToken:String,
     verifyTokenExpiry:Date,
+    
+    isVerified:{
+        type:Boolean,
+        default:false,
+    }
 
 })
 
